@@ -1,0 +1,20 @@
+<div style="text-align: center;">
+    <h1>Login form</h1>
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <div class="form-group mb-10">
+        <label>Username: </label><br>
+        <input type="text" name="user" formControlName="user" ><br>
+        <span class="text-danger" col *ngIf="user && user.invalid && user.touched">This field is invalid</span>
+
+    </div>
+    <div class="form-group mb-10">    
+        <label>Password: </label><br>
+        <input type="password" name="password" formControlName="password"><br>
+        <span class="text-danger" col *ngIf="password && password.invalid && password.touched">Minimum 5 characters, and maximum 8 characters required</span>
+    </div>
+    <div class="form-group mb-10"> 
+        <button [disabled]="loginForm.invalid" class="btn btn-primary" type="submit">Login</button>
+    </div>
+</form>
+<h3 style="text-align: center;">Not a user? <a style="color:rgb(31, 176, 230)" routerLink="/signup" routerLinkActive="active">SignUp</a></h3>

@@ -1,0 +1,92 @@
+<div class="card">
+     <form [formGroup]="userForm1" [formGroup]="userForm"><!--Use userForm1 (formGroup) when validation is required and use userForm (formGroup) when you want to add form data to the table -->
+        <div class="mt-5 box">
+            <div class="form-row">
+                <div class="col md-12">
+                    <div class="form-group mt-4">
+                        <label>Name: </label>
+                    </div>
+                    <div class="form-row" style="margin-top:10px;">
+                        <div class="col">
+                            <input type="text" name="name" formControlName="name" class="form-control" placeholder="Name">
+                            <span class="text-danger" *ngIf="name && name.invalid && name.touched">Enter correct name, length should be between 3-10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col md-12">
+                    <div class="form-group mt-4">
+                        <label>Father's Name: </label>
+                    </div>
+                    <div class="form-row" style="margin-top:10px;">
+                        <div class="col">
+                            <input type="text" name="fname" formControlName="fname" class="form-control" placeholder="Father's Name">
+                            <span class="text-danger" *ngIf="fname && fname.invalid && fname.touched">Enter correct father's name, length should be between 3-10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col md-12">
+                    <div class="form-group mt-4">
+                        <label>Email: </label>
+                    </div>
+                    <div class="form-row" style="margin-top:10px;">
+                        <div class="col">
+                            <input type="email" name="email" formControlName="email" class="form-control" placeholder="Email">
+                            <span class="text-danger" *ngIf="email && email.invalid && email.touched">Enter correct email format, length should be between 5-20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col md-12">
+                    <div class="form-group mt-4">
+                        <label>Phone: </label>
+                    </div>
+                    <div class="form-row" style="margin-top:10px;">
+                        <div class="col">
+                            <input type="phone" name="phone" formControlName="phone" class="form-control" placeholder="Phone">
+                            <span class="text-danger" *ngIf="phone && phone.invalid && phone.touched">Enter correct phone number, length should be 10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col md-12">
+                    <div class="form-group mt-4">
+                        <label>Password: </label>
+                    </div>
+                    <div class="form-row" style="margin-top:10px;">
+                        <div class="col">
+                            <input type="password" name="password" formControlName="password" class="form-control" placeholder="Password">
+                            <span class="text-danger" *ngIf="password && password.invalid && password.touched">Enter correct password, length should be between 5-10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-4">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary" (click)="addItem()">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-md-8 mt-4 mb-4" style="margin: auto;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Father's Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let item of listData">
+                   <td><span>{{item.name}}</span></td>
+                   <td><span>{{item.fname}}</span></td>
+                   <td><span>{{item.email}}</span></td> 
+                   <td><span>{{item.phone}}</span></td>
+                   <td><span>{{item.password}}</span></td>
+               </tr> 
+            </tbody>
+        </table>
+    </div>
+</div>
